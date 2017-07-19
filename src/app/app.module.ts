@@ -10,6 +10,9 @@ import { AppComponent } from './app.component';
 import {CoreModule} from './core/core.module';
 import {ProfileModule} from './profile/profile.module';
 import {BoardsModule} from './boards/boards.module';
+import {AngularFireModule} from 'angularfire2';
+import {environment} from '../environments/environment';
+import {AngularFireAuthModule} from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,8 @@ import {BoardsModule} from './boards/boards.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     MaterialModule,
     RouterModule,
     CoreModule,

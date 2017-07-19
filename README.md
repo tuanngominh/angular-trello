@@ -1,10 +1,12 @@
-# Angular101
+# Angular 101
 
 Try angular 4+ feature by reimplementing trello.com
 
-## Layout
-Having two layouts: one for guest user (e.g. Login page), one for logged in user.
+## Authentication with angularfire2
 
+## State management with Ngrx 4+
+
+## Layout
 Layout component will be located in core module and instantiate once.
 Use Observable to monitor auth state to switch layout.
 
