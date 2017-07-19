@@ -1,28 +1,23 @@
 # Angular101
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+Try angular 4+ feature by reimplementing trello.com
 
-## Development server
+## Layout
+Having two layouts: one for guest user (e.g. Login page), one for logged in user.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Layout component will be located in core module and instantiate once.
+Use Observable to monitor auth state to switch layout.
 
-## Code scaffolding
+### Switch layout using router
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+Reference:
+- https://stackoverflow.com/questions/36665094/angular2-using-routes-how-to-display-the-navigation-bar-after-successfully-log
+- https://github.com/angular/angular/issues/10958
+- https://github.com/angular/angular/issues/12648
 
-## Build
+Routing Module: use loadChildern(). Not stable approach yet. 
+Separate guest components and user components to two modules.???
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Redux state and firebase database
+http://redux.js.org/docs/recipes/reducers/NormalizingStateShape.html
+https://firebase.google.com/docs/database/web/structure-data
