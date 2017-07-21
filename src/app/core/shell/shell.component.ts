@@ -6,12 +6,12 @@ import * as firebase from 'firebase/app';
   selector: 'app-shell',
   template: `
     <!-- layout for logged in user -->
-    <app-logged-in-layout *ngIf="(user | async)?.uid" [user]="user">
+    <app-logged-in-layout *ngIf="(loggedIn | async)" [user]="user">
       <router-outlet></router-outlet>
     </app-logged-in-layout>
 
     <!-- layout for guest user -->
-    <app-guest-layout *ngIf="!(user | async)?.uid">
+    <app-guest-layout *ngIf="!(loggedIn | async)">
       <router-outlet></router-outlet>
     </app-guest-layout>
   `,
@@ -19,6 +19,7 @@ import * as firebase from 'firebase/app';
 })
 export class ShellComponent implements OnInit {
   @Input() user: Observable<firebase.User>;
+  @Input() loggedIn: Observable<boolean>;
 
   constructor() { }
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import {LoginComponent} from './login/login.component';
+
 import {ShellComponent} from './shell/shell.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoggedInLayoutComponent } from './shell/logged-in-layout/logged-in-layout.component';
@@ -13,7 +13,7 @@ import { GuestLayoutComponent } from './shell/guest-layout/guest-layout.componen
     SharedModule,
     RouterModule
   ],
-  declarations: [LoginComponent, ShellComponent, PageNotFoundComponent, LoggedInLayoutComponent, GuestLayoutComponent],
-  exports: [LoginComponent, ShellComponent, PageNotFoundComponent]
+  declarations: [ShellComponent, PageNotFoundComponent, LoggedInLayoutComponent, GuestLayoutComponent],
+  exports: [ShellComponent, PageNotFoundComponent]
 })
 export class CoreModule { }

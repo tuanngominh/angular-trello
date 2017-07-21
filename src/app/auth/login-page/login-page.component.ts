@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFireAuth} from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import {Store} from '@ngrx/store';
+import * as fromAuth from '../auth.reducer';
+import * as Auth from '../auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -15,16 +16,16 @@ import * as firebase from 'firebase/app';
       </md-card-actions>
     </md-card>
   `,
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login-page.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginPageComponent implements OnInit {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(private store: Store<fromAuth.State>) { }
 
   ngOnInit() {
   }
 
   login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.store.dispatch(new Auth.Login());
   }
 }

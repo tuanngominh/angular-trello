@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {AngularFireAuth} from 'angularfire2/auth';
 import {Observable} from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
-import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import * as fromAuth from './auth/auth.reducer';
+import {getLoggedIn} from './auth/auth.reducer';
 
 @Component({
   selector: 'app-root',
   template: `
-    <app-shell [user]="user">
+    <app-shell [user]="user" [loggedIn]="loggedIn">
       <router-outlet></router-outlet>
     </app-shell>
   `,
@@ -15,22 +16,13 @@ import {Router} from '@angular/router';
 })
 export class AppComponent implements OnInit {
   user: Observable<firebase.User>;
+  loggedIn: Observable<boolean>;
 
-  constructor(public afAuth: AngularFireAuth, private router: Router) {
-    this.user = afAuth.authState;
+  constructor(
+    private store: Store<fromAuth.State>) {
+    this.loggedIn = this.store.select(getLoggedIn);
   }
 
   ngOnInit() {
-    this.user.subscribe((firebaseUser: firebase.User) => {
-      if (firebaseUser) {
-        if (this.router.url === '/login') {
-          this.router.navigateByUrl('/');
-        }
-      } else {
-        if (this.router.url !== '/login') {
-          this.router.navigateByUrl('/login');
-        }
-      }
-    });
   }
 }

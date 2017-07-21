@@ -1,7 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
+import * as fromAuth from '../../../auth/auth.reducer';
+import * as Auth from '../../../auth/auth.actions';
 import {Observable} from 'rxjs/Observable';
-import * as firebase from 'firebase/app';
-import {AngularFireAuth} from 'angularfire2/auth';
+import {User} from 'firebase/app';
 
 @Component({
   selector: 'app-logged-in-layout',
@@ -21,14 +23,13 @@ import {AngularFireAuth} from 'angularfire2/auth';
   styleUrls: ['./logged-in-layout.component.scss']
 })
 export class LoggedInLayoutComponent implements OnInit {
-  @Input() user: Observable<firebase.User>;
-
-  constructor(public afAuth: AngularFireAuth) { }
+  @Input() user: Observable<User>;
+  constructor(private store: Store<fromAuth.State>) { }
 
   ngOnInit() {
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.store.dispatch(new Auth.Logout());
   }
 }
