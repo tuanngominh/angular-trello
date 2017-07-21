@@ -11,9 +11,9 @@ import * as firebase from 'firebase/app';
     </app-logged-in-layout>
 
     <!-- layout for guest user -->
-    <div *ngIf="!(user | async)?.uid">
+    <app-guest-layout *ngIf="!(user | async)?.uid">
       <router-outlet></router-outlet>
-    </div>
+    </app-guest-layout>
   `,
   styleUrls: ['./shell.component.scss']
 })
