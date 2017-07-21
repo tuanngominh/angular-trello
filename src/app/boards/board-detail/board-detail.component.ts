@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
       board-detail works!
     </p>
   `,
-  styleUrls: ['./board-detail.component.css']
+  styleUrls: ['./board-detail.component.scss']
 })
 export class BoardDetailComponent implements OnInit {
 

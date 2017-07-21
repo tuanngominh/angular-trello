@@ -7,9 +7,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-root',
   template: `
-    <app-shell
-      [user]="user"
-      (onLogoutRequested)="logout()">
+    <app-shell [user]="user">
       <router-outlet></router-outlet>
     </app-shell>
   `,
@@ -34,9 +32,5 @@ export class AppComponent implements OnInit {
         }
       }
     });
-  }
-
-  logout() {
-    this.afAuth.auth.signOut();
   }
 }

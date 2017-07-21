@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 
@@ -6,32 +6,22 @@ import * as firebase from 'firebase/app';
   selector: 'app-shell',
   template: `
     <!-- layout for logged in user -->
-    <div *ngIf="(user | async)?.uid">
-      <h1>Header</h1>
-      <button
-        *ngIf="(user | async)?.uid"
-        (click)="logout()"
-      >Logout</button>
+    <app-logged-in-layout *ngIf="(user | async)?.uid" [user]="user">
       <router-outlet></router-outlet>
-      <h1>Footer</h1>
-    </div>
+    </app-logged-in-layout>
+
     <!-- layout for guest user -->
     <div *ngIf="!(user | async)?.uid">
       <router-outlet></router-outlet>
     </div>
   `,
-  styleUrls: ['./shell.component.css']
+  styleUrls: ['./shell.component.scss']
 })
 export class ShellComponent implements OnInit {
   @Input() user: Observable<firebase.User>;
-  @Output() onLogoutRequested = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  logout() {
-    this.onLogoutRequested.emit();
   }
 }

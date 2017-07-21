@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardListComponent } from './board-list/board-list.component';
 import { BoardDetailComponent } from './board-detail/board-detail.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     BoardsRoutingModule
   ],
   declarations: [BoardListComponent, BoardDetailComponent]

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
       page-not-found Works!
     </p>
   `,
-  styleUrls: ['./page-not-found.component.css']
+  styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent implements OnInit {
 

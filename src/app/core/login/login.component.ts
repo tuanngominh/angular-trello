@@ -10,7 +10,7 @@ import * as firebase from 'firebase/app';
       <button (click)="login()">Login</button>
     </p>
   `,
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 

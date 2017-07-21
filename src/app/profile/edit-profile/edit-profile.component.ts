@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
       edit-profile works!
     </p>
   `,
-  styleUrls: ['./edit-profile.component.css']
+  styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
 
