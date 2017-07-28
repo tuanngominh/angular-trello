@@ -18,11 +18,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  user: Observable<firebase.User>;
+  user: Observable<User>;
   loggedIn: Observable<boolean>;
 
   constructor(
     private store: Store<fromAuth.State>, private afAuth: AngularFireAuth, private router: Router) {
+    this.user = this.store.select(fromAuth.getUser);
     this.loggedIn = this.store.select(fromAuth.getLoggedIn);
   }
 

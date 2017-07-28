@@ -51,3 +51,8 @@ export const getLoggedIn = createSelector(
   selectAuthState,
   (state: AuthState) => state.loggedIn
 );
+
+export const getUser = createSelector(
+  selectAuthState,
+  (state: AuthState) => state.user
+);
