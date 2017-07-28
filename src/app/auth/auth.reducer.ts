@@ -19,6 +19,13 @@ export interface State extends fromRoot.State {
 
 export function reducer(state = initialState, action: auth.Actions): AuthState {
   switch (action.type) {
+    case auth.INIT_USER:
+      return {
+        ...state,
+        loggedIn: true,
+        user: action.payload.user
+      }
+
     case auth.LOGIN_SUCCESS: {
       return {
         ...state,

@@ -6,15 +6,23 @@ import {AuthGuard} from '../auth/auth-guard.service';
 
 const routes: Routes = [
   {
-    path: 'boards',
-    component: BoardListComponent,
-    // TODO find a way to guard all the route, not one by one like this
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'boards/:id',
-    component: BoardDetailComponent,
-    canActivate: [AuthGuard]
+    path: '',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'boards/:id',
+        component: BoardDetailComponent,
+      },
+      {
+        path: 'boards',
+        component: BoardListComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'boards',
+        pathMatch: 'full'
+      }
+    ]
   }
 ];
 
