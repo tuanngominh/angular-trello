@@ -4,6 +4,11 @@ import {PageNotFoundComponent} from './core/page-not-found/page-not-found.compon
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/boards',
+    pathMatch: 'full'
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }
