@@ -29,7 +29,10 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   loginSuccess$ = this.actions$
     .ofType(Auth.LOGIN_SUCCESS)
-    .do(() => this.router.navigate(['/']));
+    // TODO: redirect to '/' then with router config redirect, get redirect to '/boards' doesn't work
+    // the header is change with logged in user but component still login form
+    // Redirect directly to '/boards' work
+    .do(() => this.router.navigate(['/boards']));
 
   @Effect({ dispatch: false })
   loginRedirect$ = this.actions$

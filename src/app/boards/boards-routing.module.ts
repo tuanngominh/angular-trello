@@ -5,29 +5,18 @@ import {BoardDetailComponent} from './board-detail/board-detail.component';
 import {AuthGuard} from '../auth/auth-guard.service';
 
 const routes: Routes = [
+  // TODO always show detail page no matter detail route come first or listing route come first
+  // {
+  //   path: ':id',
+  //   component: BoardDetailComponent,
+  // },
   {
     path: '',
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'boards/:id',
-        component: BoardDetailComponent,
-      },
-      {
-        path: 'boards',
-        component: BoardListComponent,
-      },
-      {
-        path: '',
-        redirectTo: 'boards',
-        pathMatch: 'full'
-      }
-    ]
-  }
+    component: BoardListComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)]
 })
 export class BoardsRoutingModule { }
